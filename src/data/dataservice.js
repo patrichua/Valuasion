@@ -95,9 +95,6 @@ class DataService {
                 return response.json()
             }
         })
-        .then(function(result){
-            return result.annual
-        })
     }
 }
 

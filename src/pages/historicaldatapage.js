@@ -80,16 +80,26 @@ class HistoricalDataPage extends React.Component {
         return Promise.all(chartDataTypes.map(function(type) {
             return self.dataService.getHistorical(ticker, type)
         }))
-        .then((charts) => {
-            let chartData = []
+        .then((historicals) => {
+            let charts = []
             for (let i=0; i<chartDataTypes.length; i++) {
-                chartData.push({
-                    "type": chartDataTypes[i],
-                    "data": charts[i]
+                let chartType = chartDataTypes[i]
+                let chartData = []
+                
+                if (["return_on_invested_capital", "return_on_equity"].indexOf(chartType) !== -1) {
+                    chartData = historicals[i].growth_rate
+                }
+                else {
+                    chartData = historicals[i].annual
+                }
+
+                charts.push({
+                    "type": chartType,
+                    "data": chartData
                 })
             }
 
-            return chartData
+            return charts
           })
     }
 }
