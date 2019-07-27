@@ -1,0 +1,78 @@
+.header {
+  display: flex;
+  padding: 1em;
+}
+
+.header-left {
+  text-align: left;
+  flex: 2;
+}
+
+.header-center {
+  flex: 4;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.header h1 {
+  font-size: 1.5em;
+}
+
+.header h2 {
+  font-size: 1.1em;
+}
+
+.header h3 {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.header-right {
+  flex: 2;
+}
+
+.ticker {
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.rating {
+  font-size: 1em;
+  color: #fff;
+}
+
+.price {
+  font-size: 0.8em;
+  color: #fff;
+}
+
+.summary {
+  font-size: 0.8em;
+  padding: 1em;
+  background-color: #526B79;
+  color: #fff;
+  text-align: justify;
+  text-justify: distribute;
+}
+
+.chart-section {
+  margin-top: 1em;
+  padding: 1em 0;
+}
+
+h1.chart-type-header {
+  font-size: 2em;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.chart-type-button {
+  width: 2em;
+  height: 2em;
+}
+
+.loading-charts {
+  font-size: 3em;
+}
+

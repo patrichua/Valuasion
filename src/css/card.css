@@ -1,0 +1,141 @@
+/*
+ * START: Search Result.
+ */
+ 
+.result-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.result-card {
+    background-color: #153541;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 1em;
+}
+
+.result-card-row {
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+}
+
+.result-card-top-left {
+    text-align: left;
+    vertical-align: top;
+    flex: 1;
+}
+
+.result-card-bottom-left {
+    text-align: left;
+    vertical-align: bottom;
+    flex: 1;
+}
+
+.result-card-top-right {
+text-align: right;
+vertical-align: top !important;
+flex: 1;
+}
+
+.result-card-bottom-right {
+text-align: right;
+vertical-align: bottom;
+flex: 1;
+}
+
+.result-card a {
+color: #fff;
+text-decoration: none;
+}
+
+.add-to-watch-list {
+font-size: 0.5em;
+vertical-align: top;
+}
+
+.add-to-watch-list-plus-sign {
+color: green !important;
+font-size: 3em !important;
+line-height: 0.5em;
+}
+
+.result-card-ticker {
+font-size: 1.25em;
+color: #96897B;
+}
+
+.result-card-company-name {
+font-size: 0.75em;
+}
+
+.result-card-rating {
+width: 50%;
+text-align: center;
+margin: auto;
+padding: 2em;
+background-color: #000;
+color: #fff;
+}
+
+.result-card-rating-point {
+font-size: 3em;
+}
+
+.result-card-more-info {
+font-size: 1em !important;
+color: #96897B !important;
+}
+
+.unknown-value {
+    font-size: 1.2em;
+    color: yellow
+}
+
+/*
+ * END: Search Result.
+ */
+
+ /*
+ * START: Charts.
+ */
+
+.chart-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;  
+}
+
+.chart {
+    background-color: #153541;
+    color: #fff;
+    flex: 1;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+}
+
+.chart-title {
+    font-size: 1.5em;
+}
+
+.chart-growth-summary {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 0.8em;
+}
+
+.chart-growth-summary span {
+    flex: 1;
+}
+
+.loading-charts {
+    padding: 1em;
+}
+ /*
+ * END: Charts.
+ */  

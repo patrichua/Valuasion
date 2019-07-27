@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navigator from './components/navigator'
+import HomePage from './pages/homepage'
+import GrowthRatePage from './pages/growthratepage'
+import HistoricalDataPage from './pages/historicaldatapage'
+import CalculatorPage from './pages/calculatorpage'
+import LearnPage from './pages/learnpage'
+import './css/main.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <main className="main">
+        <Router>
+          <Navigator />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/learn" component={LearnPage} />
+          <Route path="/calculator" component={CalculatorPage} />
+          <Route path="/growthrate" component={GrowthRatePage} />
+          <Route path="/historicaldata" component={HistoricalDataPage} />
+        </Router> 
+      </main>
     </div>
   );
 }

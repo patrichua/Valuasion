@@ -1,0 +1,78 @@
+.header {
+  padding: 1em;
+  color: #fff;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 1em ;
+}
+
+.summary {
+  font-size: 1em;
+  padding: 2em;
+  margin: 0 2em;
+  background-color: #526B79;
+  color: #fff;
+  text-align: left;
+  line-height: 2em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  text-align: left;
+}
+
+.form-row {
+  display: flex;
+  padding: 1em;
+}
+
+.form-row label {
+  text-align: right;
+  padding-right: 1em;
+  flex: 1;
+}
+
+.form-row label > span {
+  font-size: 0.8em
+}
+
+.form-row input {
+  flex: 3;
+}
+
+.form input {
+  height: 1.5em;
+}
+
+.instruction {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.btn-calculate {
+  height: 3em;
+  font-size: 2em;
+  background-color: #8e7a5d;
+  color: #fff;
+}
+
+.calculation-result {
+  font-size: 2em;
+}
+
+.show {
+  display: block;
+  line-height: 2em;
+}
+
+.hide {
+  display: none
+}
+
+.result-criteria-list {
+  list-style: none;
+}
