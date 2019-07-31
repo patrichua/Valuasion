@@ -29,13 +29,14 @@ body {
     background-image: url('../images/background.png');
     background-color: #C9C9C9;
     background-blend-mode: multiply;
+    padding: 0 10%;
 }
 
 .main {
   font-size: 1em;
   color: #fff;
   background-color: #628395;
-  margin: 0 10%;
+  margin: 0 auto;
   text-align: center;
   opacity: 0.95;
   filter: alpha(opacity=95); /* For IE8 and earlier */

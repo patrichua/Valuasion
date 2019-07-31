@@ -28,10 +28,11 @@ h1 {
 .form-row {
   display: flex;
   padding: 1em;
+  flex-wrap: wrap;
 }
 
 .form-row label {
-  text-align: right;
+  text-align: left;
   padding-right: 1em;
   flex: 1;
 }
@@ -41,7 +42,7 @@ h1 {
 }
 
 .form-row input {
-  flex: 3;
+  flex: 4;
 }
 
 .form input {

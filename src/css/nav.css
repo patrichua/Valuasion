@@ -1,61 +1,106 @@
 
 .nav-bar {
-    background-image: linear-gradient(#000, rgba(0,0,0,0.1));
-    display: flex;
-    padding: 1em;
+  background-image: linear-gradient(#000, rgba(0,0,0,0.1));
+  display: flex;
+  padding: 2em;
+}
+
+.menu {
+  padding: 1em;
+}
+
+@media only screen and (max-height: 1200px) {
+  .nav-bar {
+    height: 70px;
+  }   
+}
+
+@media only screen and (max-height: 800px) {
+  .nav-bar {
+    height: 50px;
+  }  
+}
+
+@media only screen and (max-height: 500px) {
+  .nav-bar {
+    height: 40px;
+  } 
+}
+
+@media only screen and (max-height: 400px) {
+  .nav-bar {
+    height: 30px;
   }
-  
-  @media only screen and (max-height: 1200px) {
-    .nav-bar {
-      height: 70px;
-    }
+}
+
+@media only screen and (max-width: 5000px) {
+  .menu-icon {
+    display: none;
   }
-  
-  @media only screen and (max-height: 800px) {
-    .nav-bar {
-      height: 50px;
-    }
-  }
-  
-  @media only screen and (max-height: 500px) {
-    .nav-bar {
-      height: 40px;
-    }
-  }
-  
-  @media only screen and (max-height: 400px) {
-    .nav-bar {
-      height: 30px;
-    }
-  }
-  
-  .logo {
-    flex: 1;
-  }
-  
-  .logo a {
-    color: #fff;
-  }
-  
-  .logo img {
-    height: 90%;
-  }
-  
+
   .nav-bar-links {
     display: flex;
     justify-content: flex-end;
     flex: 5;
   }
-  
-  .nav-bar-links > a {
-    color: #fff;
-    font-size: 1.2em;
-    padding: 1em;
-    text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .menu-icon {
+    display: block;
+    width: 3em;
+    margin-top: -1em;
+    margin-right: -1em;
   }
-  
-  .nav-bar-links > a:hover {
-    background-color: #fff;
-    color: #000;
-    font-weight: bold;
+
+  .nav-bar-links {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    min-width: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #000;
+    z-index: 100;
+  } 
+
+  .nav-bar-links-show {
+    margin-right: 0em;
+  } 
+
+  .nav-bar-links-hide {
+    margin-right: -12em;
+  } 
+
+  .nav-bar-links > a:not(first-child) {
+    border-top: 1px solid grey;
   }
+}
+
+.logo {
+  flex: 1;
+  text-align: left;
+}
+
+.logo a {
+  color: #fff;
+}
+
+.logo img {
+  height: 90%;
+}
+
+.nav-bar-links > a {
+  color: #fff;
+  font-size: 1.2em;
+  padding: 1em;
+  text-decoration: none;
+}
+
+.nav-bar-links > a:hover {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+}

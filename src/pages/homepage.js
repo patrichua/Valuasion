@@ -1,7 +1,7 @@
 import React from 'react'
 import '../css/searchbar.css'
-import filter from '../images/filter.png'
-import search from '../images/search.png'
+import filter from '../images/filter.svg'
+import search from '../images/search.svg'
 import SummaryCardList from '../components/summarycardlist'
 import DataService from '../data/dataservice'
 
@@ -15,14 +15,25 @@ class HomePage extends React.Component {
         }
 
         this.dataService = new DataService()
+        this.isComponentMounted = false
     }
 
     componentDidMount() {
+        this.isComponentMounted = true
         // We're going to fetch some data from the server.
         this.handleSearch()
     }
 
+    componentWillUnmount() {
+        this.isComponentMounted = false
+    }
+
     render() {
+        let btnGetMore = <button className="btn-get-more" onClick={this.handleBtnGetMore}>GET MORE</button>
+        if (this.state.ticker.trim() !== "") {
+            btnGetMore = ""
+        }
+
         return (
             <div>
                 <div className="search-bar">
@@ -32,7 +43,7 @@ class HomePage extends React.Component {
                         value={this.state.ticker}
                         onChange={this.handleTxtSearchTickerChange}
                         onKeyDown={this.keyPress}
-                        placeholder="type in the ticker symbol" 
+                        placeholder="type in the ticker" 
                     />
                     <div className="search-bar-actions">
                         <img className="search" src={search} alt="filter" onClick={this.handleSearch} />
@@ -41,7 +52,7 @@ class HomePage extends React.Component {
                 </div>
                 <SummaryCardList companies={this.state.companies} />
                 <br />
-                <button className="btn-get-more" onClick={this.handleBtnGetMore}>GET MORE</button>
+                {btnGetMore}
             </div>
         )
     }
@@ -53,15 +64,21 @@ class HomePage extends React.Component {
 
     handleSearch = () => {
         let self = this
+
         let ticker = self.state.ticker
         let page = self.state.page
         if (ticker) {
             self.dataService.search(page, ticker)
             .then(function(result) {
-                self.setState((prevState) => ({ "companies": [result]}))
+                if (self.isComponentMounted) {
+                    self.setState((prevState) => ({ "companies": [result]}))
+                }
+                
                 self.getStockPrice([result])
                 .then(function(companies) {
-                    self.setState((prevState) => ({ "companies": companies}))
+                    if (self.isComponentMounted) {
+                        self.setState((prevState) => ({ "companies": companies}))
+                    }
                 })
             })
             .catch(function() {
@@ -73,7 +90,14 @@ class HomePage extends React.Component {
             .then(function(result) {
                 self.getStockPrice(result)
                 .then(function(companies) {
-                    self.setState((prevState) => ({ "companies": prevState.companies.concat(companies)}))
+                    if (self.isComponentMounted) {
+                        self.setState((prevState) => ({ "companies": prevState.companies.concat(companies)}))
+                    }
+                })
+                .catch(function() {
+                    if (self.isComponentMounted) {
+                        self.setState((prevState) => ({ "companies": result}))
+                    }
                 })
             })
             .catch(function() {
@@ -97,9 +121,13 @@ class HomePage extends React.Component {
             lookup[company.ticker] = company
             return company.ticker
         })
-
+        
         return this.dataService.getStockPrice(tickers)
         .then(function(result) {
+            if (!result) {
+                return []
+            }
+
             for (let i=0; i < result.length; i++) {
                 let item = result[i]
                 lookup[item.symbol]["stock_price"] = item.price

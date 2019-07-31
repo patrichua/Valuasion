@@ -23,7 +23,7 @@ class SummaryCard extends React.Component {
             stockPriceDisplay = <span>${stockPriceDisplay.toFixed(2)}</span>
         }
 
-        const shouldShowHotStock = (companyInfo.intrinsic_value||0) > ((companyInfo.stock_price||0)*2)
+        const shouldShowHotStock = (companyInfo.intrinsic_value && companyInfo.stock_price) && (companyInfo.intrinsic_value||0) > ((companyInfo.stock_price||0)*2)
 
         return (
             <div className="result-card">

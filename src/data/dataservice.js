@@ -63,11 +63,10 @@ class DataService {
         })
     }    
 
-    getStockPrice = (tickers, elementToUpdate) => {
-        let strTickers = tickers.join(",")
-
+    getStockPrice = (tickers) => {
+        const strTickers = tickers.join()
         let api_endpoint = this.stock_price_url.replace("{tickers}", strTickers)
-
+        
         return fetch(api_endpoint)
         .then(function(response) {
             if (response.ok) {
@@ -84,6 +83,11 @@ class DataService {
                 }
                 
             }
+
+            return null
+        })
+        .catch(function() {
+            return null
         })
     } 
     

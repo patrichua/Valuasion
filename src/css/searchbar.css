@@ -1,40 +1,88 @@
-
 .search-bar {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    padding: 2em;
-  }
-  
-  .txt-search-ticker {
-    width: 80%;
-    padding: 0.5em;
-    border: 0px;
-    font-size: 1.5em;
-    text-align: center;
-    border-radius: 0.5em 0 0 0.5em;
-  }
-  
-  .search-bar-actions {
-    width: 20%;
-    padding: 0.5em;
-    background-color: #1D1D1D;
-  }
-  
-  .filter {
-    padding: 0 10%;
-    width: 25%;
-    vertical-align: middle;
-    display: none; /* remove this once we implement the filter functionality */
-  }
-  
+  margin: 0 auto;
+  display: flex;
+  padding: 2em;
+}
+
+@media only screen and (max-width: 5000px) {
   .search {
-    padding: 0 10%;
-    width: 25%;
-    vertical-align: middle;
-    border-right: 1px solid #959595;
+    width: 5em;
   }
-  
-  .search:hover {
-    cursor: pointer;
+
+  .txt-search-ticker {
+    font-size: 3em;
   }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .search {
+    width: 3em;
+  }
+
+  .txt-search-ticker {
+    font-size: 2em;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .search {
+    width: 2em;
+  }
+
+  .txt-search-ticker {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .search {
+    width: 1.5em;
+  }  
+
+  .txt-search-ticker {
+    font-size: 1em;
+  }
+}  
+
+@media only screen and (max-width: 400px) {
+  .search {
+    width: 1em;
+  }   
+
+  .txt-search-ticker {
+    font-size: 0.8em;
+  } 
+}
+
+.txt-search-ticker {
+  width: 80%;
+  padding: 0.5em;
+  border: 0px;
+  text-align: center;
+  border-radius: 0.5em 0 0 0.5em;
+}
+
+.search-bar-actions {
+  width: 20%;
+  padding: 0.5em;
+  background-color: #1D1D1D;
+}
+
+.filter {
+  padding: 0 10%;
+  vertical-align: middle;
+  display: none; /* remove this once we implement the filter functionality */
+}
+
+.search {
+  padding: 0 10%;
+  vertical-align: middle;
+  border-right: 1px solid #959595;
+}
+
+
+
+.search:hover {
+  cursor: pointer;
+}

@@ -20,13 +20,13 @@ class CalculatorPage extends React.Component {
             <div>
                 <h1>Intrinsic Value Calculator</h1>
                 <div className="summary">
-                        This calculator allows you to calculate the fair value of a company based on:
-                        <ol>
-                            <li>Estimated Growth Rate</li>
-                            <li>Current EPS</li>
-                            <li>Average PE Ratio</li>
-                        </ol>
-                    </div>  
+                    This calculator allows you to calculate the fair value of a company based on:
+                    <ol>
+                        <li>Estimated Growth Rate</li>
+                        <li>Current EPS</li>
+                        <li>Average PE Ratio</li>
+                    </ol>
+                </div>  
             
                 <div className="form">
                     <p className="instruction">* Fill in the info below and click on the Calculate button</p>
