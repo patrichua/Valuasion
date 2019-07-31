@@ -37,9 +37,9 @@ class CompanyHeaderInfo extends React.Component {
                     <p className="summary">
                         {summary}
                         <br />
-                        Other rating: {their_rating} pt
+                        Rating from alternate source: {their_rating} pt
                         <br />
-                        Discounted cash flow: {discounted_cash_flow}
+                        Discounted cash flow: ${discounted_cash_flow.toFixed(2)}
                     </p>
                 </div>            
             )            
