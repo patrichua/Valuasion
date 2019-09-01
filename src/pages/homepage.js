@@ -11,7 +11,8 @@ class HomePage extends React.Component {
         this.state = {
             "ticker": "",
             companies: [],
-            page: 1
+            page: 1,
+            loadingData: true
         }
 
         this.dataService = new DataService()
@@ -29,12 +30,21 @@ class HomePage extends React.Component {
     }
 
     render() {
-        let btnGetMore = <button className="btn-get-more" onClick={this.handleBtnGetMore}>GET MORE</button>
+        let content = ""
+        let btnGetMore = ""
+        if (this.state.loadingData) {
+            content = <div className="loading-charts">Loading Data ...</div>
+        }        
+        else {
+            btnGetMore = <button className="btn-get-more" onClick={this.handleBtnGetMore}>GET MORE</button>
+        }
+        
         if (this.state.ticker.trim() !== "") {
+            // If they typed in a ticker, then don't show the Get More button.
             btnGetMore = ""
         }
 
-        return (
+        content =  
             <div>
                 <div className="search-bar">
                     <input 
@@ -52,8 +62,12 @@ class HomePage extends React.Component {
                 </div>
                 <SummaryCardList companies={this.state.companies} />
                 <br />
+                {content}
                 {btnGetMore}
             </div>
+
+        return (
+            content
         )
     }
 
@@ -64,6 +78,7 @@ class HomePage extends React.Component {
 
     handleSearch = () => {
         let self = this
+        self.setState({ loadingData: true})
 
         let ticker = self.state.ticker
         let page = self.state.page
@@ -71,17 +86,18 @@ class HomePage extends React.Component {
             self.dataService.search(page, ticker)
             .then(function(result) {
                 if (self.isComponentMounted) {
-                    self.setState((prevState) => ({ "companies": [result]}))
+                    self.setState((prevState) => ({ "companies": [result], loadingData: false}))
                 }
                 
                 self.getStockPrice([result])
                 .then(function(companies) {
                     if (self.isComponentMounted) {
-                        self.setState((prevState) => ({ "companies": companies}))
+                        self.setState((prevState) => ({ "companies": companies, loadingData: false}))
                     }
                 })
             })
             .catch(function() {
+                self.setState({ "companies": [], loadingData: false})
                 self.handleSearchNotFound();
             })
         }
@@ -91,7 +107,7 @@ class HomePage extends React.Component {
                 self.getStockPrice(result)
                 .then(function(companies) {
                     if (self.isComponentMounted) {
-                        self.setState((prevState) => ({ "companies": prevState.companies.concat(companies)}))
+                        self.setState((prevState) => ({ "companies": prevState.companies.concat(companies), loadingData: false}))
                     }
                 })
                 .catch(function() {
@@ -101,6 +117,7 @@ class HomePage extends React.Component {
                 })
             })
             .catch(function() {
+                self.setState({ "companies": [], loadingData: false})
                 self.handleSearchNotFound();
             })
         }

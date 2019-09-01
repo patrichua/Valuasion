@@ -55,7 +55,7 @@ class HistoricalDataPage extends React.Component {
             }
 
             charts =  (
-                <ChartList title="Historical Data" type={2} company={this.state.company}>
+                <ChartList type={2} company={this.state.company}>
                     {listOfCharts}
                 </ChartList>     
             )

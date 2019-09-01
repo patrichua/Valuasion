@@ -1,5 +1,12 @@
+.btnAdjustFairValue {
+  padding: 0.5em;
+  border-color: #F25E0D;
+  border-width: 0.1em;
+}
+
 .header {
   display: flex;
+  flex-wrap: wrap;
   padding: 1em;
 }
 
@@ -29,6 +36,11 @@
 
 .header-right {
   flex: 2;
+  text-align: right;
+}
+
+.header a {
+  text-decoration: none;
 }
 
 .ticker {
@@ -40,6 +52,10 @@
 .rating {
   font-size: 1em;
   color: #fff;
+}
+
+.hint {
+  font-size: 0.6em;
 }
 
 .price {
@@ -61,10 +77,14 @@
   padding: 1em 0;
 }
 
+.chart-type-selection {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
 h1.chart-type-header {
-  font-size: 2em;
+  padding: 1em;
   color: #fff;
-  font-weight: bolder;
 }
 
 .chart-type-button {

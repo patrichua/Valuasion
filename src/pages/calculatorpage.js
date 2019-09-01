@@ -15,63 +15,108 @@ class CalculatorPage extends React.Component {
         this.dataService = new DataService()
     }
 
+    componentDidMount() {
+        if (this.props.location.state) {
+            const { factors } = this.props.location.state
+        
+            if (factors) {
+                let eps = 0
+                let growthRate = 0
+                let pe = 0
+    
+                if (factors.eps) {
+                    eps = factors.eps.toFixed(3)
+                }
+                
+                if (factors.estimated_growth_rate) {
+                    growthRate = (factors.estimated_growth_rate * 100).toFixed(2)
+                }
+    
+                if (factors.estimate_pe) {
+                    pe = factors.estimate_pe.toFixed(2)
+                }
+    
+                this.setState({ eps: eps, growthRate: growthRate, pe: pe },
+                                () => this.recalculate())
+            }
+        }
+    }
+
     render() {
         return (
             <div>
-                <h1>Intrinsic Value Calculator</h1>
-                <div className="summary">
-                    This calculator allows you to calculate the fair value of a company based on:
-                    <ol>
-                        <li>Estimated Growth Rate</li>
-                        <li>Current EPS</li>
-                        <li>Average PE Ratio</li>
-                    </ol>
-                </div>  
-            
+                <h1>Fair Value Calculator</h1>
                 <div className="form">
-                    <p className="instruction">* Fill in the info below and click on the Calculate button</p>
-                    <div className="form-row">
-                        <label>Growth Rate (%) <br /> <span>*enter whole number</span></label>
-                        <input type="number" className="input-text" value={this.state.growthRate} onChange={this.handleTxtGrowthRateChange} />
-                    </div>
-                    <div className="form-row">
-                        <label>Current EPS</label><input type="number" className="input-text" value={this.state.eps} onChange={this.handleTxtEPSChange} />
-                    </div>
-                    <div className="form-row">
-                        <label>PE Ratio</label><input type="number" className="input-text" value={this.state.pe} onChange={this.handleTxtPEChange} />
-                    </div>
-                    <button className="btn-calculate" onClick={this.handleCalculateBtn}>Calculate</button>
-                </div>
+                    <div className="summary">
+                        <h3>This calculator allows you to calculate the fair value of a company based on:</h3>
+                        
+                        <ol>
+                            <li>Estimated Growth Rate</li>
+                            <li>Current EPS</li>
+                            <li>Average PE Ratio</li>
+                        </ol>
 
-                <div className="show">
-                <ul className="result-criteria-list">
-                    <li>Growth Rate: {this.state.growthRate}%</li>
-                    <li>Current EPS: {this.state.eps}</li>
-                    <li>PE Ratio: {this.state.pe}</li>
-                </ul>    
-                <p>Based on our calculation, the fair value of the company is</p>
-                <p className="calculation-result">${this.state.result}</p>
-                </div>                
+                        <p className="instruction">* Fill in the info below and click on the Calculate button</p>
+                        <div className="form-row">
+                            <label>Growth Rate (%)</label>
+                            <div className="input">
+                                <input type="number" value={this.state.growthRate} onChange={this.handleTxtGrowthRateChange} />
+                                <input type="range" value={this.state.growthRate} min="0" max="100" onChange={this.handleSliderGrowthRateChange}></input>
+                            </div>
+                        </div>
+                        <div className="form-row">
+                            <label>Current EPS</label>
+                            <div className="input">
+                                <input type="number" value={this.state.eps} onChange={this.handleTxtEPSChange} />
+                            </div>
+                        </div>
+                        <div className="form-row">
+                            <label>PE Ratio</label>
+                            <div className="input">
+                                <input type="number" value={this.state.pe} onChange={this.handleTxtPEChange} />
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <div className="show">
+                        <ul className="result-criteria-list">
+                            <li>Growth Rate: {this.state.growthRate}%</li>
+                            <li>Current EPS: {this.state.eps}</li>
+                            <li>PE Ratio: {this.state.pe}</li>
+                        </ul>
+                        <p className="calculation-result">Fair Value: ${this.state.result}</p>
+                        <br />
+                    </div>                      
+                </div>                                
             </div>
         )
     }
 
     handleTxtGrowthRateChange = (event) => {
+        let self = this
         const value = event.target.value
-        this.setState({growthRate: value})
+        this.setState({growthRate: value}, self.recalculate)
+    }
+
+    handleSliderGrowthRateChange = (event) => {
+        let self = this
+        const value = event.target.value
+        this.setState({growthRate: value}, self.recalculate)
     }
 
     handleTxtEPSChange = (event) => {
+        let self = this
         const value = event.target.value
-        this.setState({eps: value})
+        this.setState({eps: value}, self.recalculate)
     }
 
     handleTxtPEChange = (event) => {
+        let self = this
         const value = event.target.value
-        this.setState({pe: value})
+        this.setState({pe: value}, self.recalculate)
     }
 
-    handleCalculateBtn = () => {
+    recalculate = () => {
         let self = this
         this.dataService.getIntrinsicValue(this.state.eps, this.state.growthRate, this.state.pe)
         .then(function(result) {

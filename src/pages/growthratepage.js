@@ -25,7 +25,7 @@ class GrowthRatePage extends React.Component {
         let charts = <div className="loading-charts">Loading Charts ...</div>
         if (!this.state.loadingData) {
             charts =  (
-                <ChartList title="Growth Rate" type={1} company={this.state.company}>
+                <ChartList type={1} company={this.state.company}>
                     <GrowthRateChart title="ROIC" data={this.state.chartData.roic} ref="ROICCHART" />
                     <GrowthRateChart title="ROE" data={this.state.chartData.roe} ref="ROECHART" />
                     <GrowthRateChart title="BVPS" data={this.state.chartData.bvps} ref="BVPSCHART" />

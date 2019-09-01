@@ -4,27 +4,33 @@ import '../css/details.css'
 
 class ChartList extends React.Component {
     render() {
-        const { title, type } = this.props
+        const { type } = this.props
         return (
             <div className="chart-section">
-                <div className="chart-selection">
-                    <Link to={{
-                        pathname: '/growthrate',
-                        state: {
-                            company: this.props.company
-                        }
+                <div className="chart-type-selection">
+                    <div>
+                        <h1 className="chart-type-header">Growth Rate</h1>
+                        <Link 
+                            to={{
+                                pathname: '/growthrate',
+                                state: {
+                                    company: this.props.company
+                                }
                         }}>
-                        <input type="radio" name="chart-type-button" className="chart-type-button" defaultChecked={type===1} />                     
-                    </Link>                        
-                    <Link to={{
-                        pathname: '/historicaldata',
-                        state: {
-                            company: this.props.company
-                        }
-                        }}>
-                        <input type="radio" name="chart-type-button" className="chart-type-button" defaultChecked={type===2} />
-                    </Link>                                                       
-                    <h1 className="chart-type-header">{title}</h1>
+                            <input type="radio" name="chart-type-button" className="chart-type-button" defaultChecked={type===1} />                     
+                        </Link>  
+                    </div>
+                    <div>
+                        <h1 className="chart-type-header">Historical Data</h1>
+                        <Link 
+                            to={{
+                                pathname: '/historicaldata',
+                                state: {
+                                    company: this.props.company
+                                }}}>
+                            <input type="radio" name="chart-type-button" className="chart-type-button" defaultChecked={type===2} />
+                        </Link>                           
+                    </div>                 
                 </div> 
 
                 <div className="chart-list"> 

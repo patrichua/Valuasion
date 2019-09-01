@@ -1,48 +1,36 @@
 .header {
-  padding: 1em;
+  padding: 1em 0;
   color: #fff;
 }
 
 h1 {
   font-size: 2em;
-  margin: 1em ;
-}
-
-.summary {
-  font-size: 1em;
-  padding: 2em;
-  margin: 0 2em;
-  background-color: #526B79;
-  color: #fff;
-  text-align: left;
-  line-height: 2em;
+  margin: 1em 0;
 }
 
 .form {
   display: flex;
-  flex-direction: column;
-  padding: 2em;
+  flex-wrap: wrap;
   text-align: left;
+  
 }
 
 .form-row {
   display: flex;
-  padding: 1em;
   flex-wrap: wrap;
 }
 
 .form-row label {
   text-align: left;
-  padding-right: 1em;
-  flex: 1;
+  flex: 2;
 }
 
 .form-row label > span {
   font-size: 0.8em
 }
 
-.form-row input {
-  flex: 4;
+.form-row .input {
+  flex: 2;
 }
 
 .form input {
@@ -54,24 +42,38 @@ h1 {
   font-size: 0.8em;
 }
 
-.btn-calculate {
-  height: 3em;
-  font-size: 2em;
-  background-color: #8e7a5d;
-  color: #fff;
-}
-
 .calculation-result {
   font-size: 2em;
+}
+
+.summary {
+  font-size: 1em;
+  background-color: #526B79;
+  color: #fff;
+  text-align: left;
+  line-height: 2em;
+  flex: 1;
 }
 
 .show {
   display: block;
   line-height: 2em;
+  flex: 1;
+}
+
+@media only screen and (min-width: 600px) {
+  .summary {
+    padding: 2em;
+  }
+
+  .show {
+    padding: 2em;
+  }
 }
 
 .hide {
-  display: none
+  display: none;
+  flex: 1;
 }
 
 .result-criteria-list {
