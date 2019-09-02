@@ -9,7 +9,6 @@ class ChartList extends React.Component {
             <div className="chart-section">
                 <div className="chart-type-selection">
                     <div>
-                        <h1 className="chart-type-header">Growth Rate</h1>
                         <Link 
                             to={{
                                 pathname: '/growthrate',
@@ -17,17 +16,18 @@ class ChartList extends React.Component {
                                     company: this.props.company
                                 }
                         }}>
+                            <h2 className="chart-type-header">Growth Rate</h2>
                             <input type="radio" name="chart-type-button" className="chart-type-button" defaultChecked={type===1} />                     
                         </Link>  
                     </div>
                     <div>
-                        <h1 className="chart-type-header">Historical Data</h1>
                         <Link 
                             to={{
                                 pathname: '/historicaldata',
                                 state: {
                                     company: this.props.company
                                 }}}>
+                            <h2 className="chart-type-header">Historical Data</h2>
                             <input type="radio" name="chart-type-button" className="chart-type-button" defaultChecked={type===2} />
                         </Link>                           
                     </div>                 

@@ -1,6 +1,8 @@
 .btnAdjustFairValue {
   padding: 0.5em;
-  border-color: #F25E0D;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
   border-width: 0.1em;
 }
 
@@ -77,14 +79,19 @@
   padding: 1em 0;
 }
 
+.chart-section a {
+  text-decoration: none;
+}
+
 .chart-type-selection {
   display: inline-flex;
   flex-wrap: wrap;
 }
 
-h1.chart-type-header {
-  padding: 1em;
+.chart-type-header {
+  padding: 2em;
   color: #fff;
+  font-size: 1.5em;
 }
 
 .chart-type-button {
