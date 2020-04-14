@@ -17,7 +17,8 @@ class CompanyHeaderInfo extends React.Component {
                 sector,
                 industry,
                 exchange,
-                discounted_cash_flow
+                discounted_cash_flow,
+                last_update
             } = this.props.company
     
             let confidenceMeter = ""
@@ -40,6 +41,7 @@ class CompanyHeaderInfo extends React.Component {
                             <h1>{company_name}</h1>
                             <h2>{sector} | {industry}</h2>
                             <h3>({exchange})</h3>
+                            <h3>last updated {new Date(last_update).toDateString()}</h3>
                         </div>    
                         <div className="header-right">
                             {/*<!-- this will be the add to watchlist -->*/}  
