@@ -73,19 +73,6 @@ class DataService {
                 return response.json()
             }
         })
-        .then(function(result) {
-            if (result) {
-                if (tickers.length > 1) {
-                    return result.companiesPriceList
-                }
-                else {
-                    return [result]
-                }
-                
-            }
-
-            return null
-        })
         .catch(function() {
             return null
         })
