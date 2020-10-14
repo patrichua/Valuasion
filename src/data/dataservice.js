@@ -26,6 +26,23 @@ class DataService {
         }
     }
 
+    sp500 = (page) => {
+        let api_endpoint = ""
+
+        api_endpoint = this.api_root + '/sp500?' + (page > 1 ? 'page=' + page : '')
+        return fetch(api_endpoint)
+        .then(function(response) {
+            if (response.ok) {
+                return response.json()
+            }
+        })
+        .then(function(result) {
+            if (result) {
+                return result
+            }
+        })
+    }
+
     getCompanyInfo = (ticker) => {
         ticker = ticker.toUpperCase()
         let api_endpoint = this.api_root + '/company_info/' + ticker

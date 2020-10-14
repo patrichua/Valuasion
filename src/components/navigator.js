@@ -44,6 +44,7 @@ class Navigator extends React.Component {
                     </div>
                     <div className="nav-bar-links nav-bar-links-hide" ref={this.navBarLinks}>
                         <Link to="/" onClick={() => this.closeMenu()}>Home</Link>
+                        <Link to="/sp500" onClick={() => this.closeMenu()}>S&amp;P 500</Link>
                         <Link to="/calculator" onClick={() => this.closeMenu()}>Calculator</Link>
                         <a href="https://investingwith.us">Learn More</a>
                     </div>
