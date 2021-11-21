@@ -10,8 +10,8 @@ class GrowthRateChart extends React.Component {
         const ten_year = (this.props.data["10_year"] || 0) * 100
 
         this.chartSummary(chartID, {
-            Labels: ["1 Year", "5 Year", "10 Year"],
-            Values: [one_year, five_year, ten_year]   
+            Labels: ["10 Year", "5 Year", "1 Year"],
+            Values: [ten_year, five_year, one_year]   
         });
         
     }
@@ -25,9 +25,9 @@ class GrowthRateChart extends React.Component {
             <div className="chart">
                 <h1 className="chart-title">{this.props.title}</h1>
                 <div className="chart-growth-summary">
-                    <span>1 year: {parseInt(one_year)}%</span>
-                    <span>5 years: {parseInt(five_year)}%</span>
                     <span>10 years: {parseInt(ten_year)}%</span>
+                    <span>5 years: {parseInt(five_year)}%</span>
+                    <span>1 year: {parseInt(one_year)}%</span>
                 </div>
                 <canvas id={this.props.title+"Chart"} ></canvas>
             </div>

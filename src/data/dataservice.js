@@ -2,8 +2,7 @@ import AppConfig from '../app.config'
 
 class DataService {
     api_root = AppConfig["api_url"]
-    stock_price_url = AppConfig["stock_price_url"]
-
+    
     search = (page, ticker) => {
         let api_endpoint = ""
 
@@ -82,7 +81,8 @@ class DataService {
 
     getStockPrice = (tickers) => {
         const strTickers = tickers.join()
-        let api_endpoint = this.stock_price_url.replace("{tickers}", strTickers)
+        let stock_price_url = this.api_root + "/stock_quote/{tickers}"
+        let api_endpoint = stock_price_url.replace("{tickers}", strTickers)
         
         return fetch(api_endpoint)
         .then(function(response) {
